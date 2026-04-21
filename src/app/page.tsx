@@ -34,7 +34,9 @@ function Card({
   className?: string;
   children: React.ReactNode;
 }) {
-  return <div className={`rounded-2xl border border-slate-200 bg-white ${className ?? ""}`}>{children}</div>;
+  return (
+    <div className={`rounded-2xl border border-amber-300/20 bg-black/50 backdrop-blur-sm ${className ?? ""}`}>{children}</div>
+  );
 }
 
 const serviceOptions = [
@@ -151,29 +153,31 @@ export default function AdarzuriAIDemo() {
 
   const buttonClass = (active: boolean) =>
     `rounded-2xl px-3 py-2 text-sm border transition ${
-      active ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-800 border-slate-300 hover:bg-slate-50"
+      active
+        ? "bg-amber-400 text-black border-amber-300"
+        : "bg-black/40 text-amber-100 border-amber-200/20 hover:bg-black/60 hover:border-amber-200/40"
     }`;
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#0b0b0b] via-[#121212] to-[#090909] text-amber-50">
       <section className="mx-auto max-w-7xl px-6 py-10">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             <Card className="border-0 shadow-lg">
               <div className="space-y-4 p-8">
-                <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs">Propuesta privada para Adarzuri</span>
+                <span className="w-fit rounded-full bg-amber-300/15 px-3 py-1 text-xs text-amber-200">Propuesta privada para Adarzuri</span>
                 <div className="space-y-3">
                   <h1 className="text-3xl font-semibold tracking-tight">Sistema IA de captación y diagnóstico inicial</h1>
-                  <p className="max-w-2xl text-base leading-7 text-slate-600">
+                  <p className="max-w-2xl text-base leading-7 text-amber-50/80">
                     Una entrada guiada para potenciales clientes. La IA recoge el caso, detecta el área fiscal/contable/laboral,
                     pide la documentación clave, prioriza el lead y deja a Adarzuri un resumen limpio para actuar.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full bg-slate-100 px-3 py-1">OpenAI API</span>
-                  <span className="rounded-full bg-slate-100 px-3 py-1">Next.js</span>
-                  <span className="rounded-full bg-slate-100 px-3 py-1">Lead scoring</span>
-                  <span className="rounded-full bg-slate-100 px-3 py-1">Resumen estructurado</span>
+                  <span className="rounded-full bg-amber-300/15 px-3 py-1 text-amber-100">OpenAI API</span>
+                  <span className="rounded-full bg-amber-300/15 px-3 py-1 text-amber-100">Next.js</span>
+                  <span className="rounded-full bg-amber-300/15 px-3 py-1 text-amber-100">Lead scoring</span>
+                  <span className="rounded-full bg-amber-300/15 px-3 py-1 text-amber-100">Resumen estructurado</span>
                 </div>
               </div>
             </Card>
@@ -183,7 +187,7 @@ export default function AdarzuriAIDemo() {
             <Card className="border-0 shadow-xl">
               <div className="p-8 pb-4">
                 <h2 className="text-xl font-semibold">Impacto directo en negocio</h2>
-                <p className="text-slate-600">No sustituye al asesor. Filtra, ordena y acelera la captación.</p>
+                <p className="text-amber-50/75">No sustituye al asesor. Filtra, ordena y acelera la captación.</p>
               </div>
               <div className="space-y-3 px-8 pb-8">
                 {[
@@ -194,8 +198,8 @@ export default function AdarzuriAIDemo() {
                   "Puede terminar en WhatsApp, email o reserva de llamada.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" />
-                    <p className="text-sm leading-6 text-slate-700">{item}</p>
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
+                    <p className="text-sm leading-6 text-amber-50/85">{item}</p>
                   </div>
                 ))}
               </div>
@@ -210,14 +214,14 @@ export default function AdarzuriAIDemo() {
             <Card className="border-0 shadow-xl">
               <div className="p-8">
                 <h2 className="text-2xl font-semibold">Simulación de entrada de cliente potencial</h2>
-                <p className="text-slate-600">Simula lo que rellenaría un autónomo o pyme antes de hablar con Adarzuri.</p>
+                <p className="text-amber-50/75">Simula lo que rellenaría un autónomo o pyme antes de hablar con Adarzuri.</p>
               </div>
               <div className="space-y-6 px-8 pb-8">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Nombre</label>
                     <input
-                      className="w-full rounded-2xl border border-slate-300 px-3 py-2"
+                      className="w-full rounded-2xl border border-amber-200/30 bg-black/40 px-3 py-2 text-amber-50"
                       value={form.name}
                       onChange={(event) => setForm({ ...form, name: event.target.value })}
                     />
@@ -225,7 +229,7 @@ export default function AdarzuriAIDemo() {
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Negocio</label>
                     <input
-                      className="w-full rounded-2xl border border-slate-300 px-3 py-2"
+                      className="w-full rounded-2xl border border-amber-200/30 bg-black/40 px-3 py-2 text-amber-50"
                       value={form.business}
                       onChange={(event) => setForm({ ...form, business: event.target.value })}
                     />
@@ -273,7 +277,7 @@ export default function AdarzuriAIDemo() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Población</label>
                   <input
-                    className="w-full rounded-2xl border border-slate-300 px-3 py-2"
+                    className="w-full rounded-2xl border border-amber-200/30 bg-black/40 px-3 py-2 text-amber-50"
                     value={form.town}
                     onChange={(event) => setForm({ ...form, town: event.target.value })}
                   />
@@ -308,12 +312,12 @@ export default function AdarzuriAIDemo() {
                     rows={6}
                     value={form.message}
                     onChange={(event) => setForm({ ...form, message: event.target.value })}
-                    className="w-full rounded-2xl border border-slate-300 px-3 py-2"
+                    className="w-full rounded-2xl border border-amber-200/30 bg-black/40 px-3 py-2 text-amber-50"
                   />
                 </div>
 
                 <button
-                  className="flex w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-base text-white"
+                  className="flex w-full items-center justify-center rounded-2xl bg-amber-400 px-4 py-3 text-base font-medium text-black transition hover:bg-amber-300"
                   onClick={() => setSubmitted(true)}
                   type="button"
                 >
@@ -329,29 +333,29 @@ export default function AdarzuriAIDemo() {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-semibold">Panel interno del despacho</h2>
-                    <p className="text-slate-600">Lo que recibiría el despacho tras el análisis automático.</p>
+                    <p className="text-amber-50/75">Lo que recibiría el despacho tras el análisis automático.</p>
                   </div>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-sm">Lead score {result.score}/100</span>
+                  <span className="rounded-full bg-amber-300/15 px-3 py-1 text-sm text-amber-100">Lead score {result.score}/100</span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
-                  <div className="h-full rounded-full bg-slate-900" style={{ width: `${result.score}%` }} />
+                <div className="h-2 w-full overflow-hidden rounded-full bg-amber-200/20">
+                  <div className="h-full rounded-full bg-amber-300" style={{ width: `${result.score}%` }} />
                 </div>
               </div>
               <div className="space-y-6 px-8 pb-8">
-                <div className="rounded-2xl bg-slate-100 p-4">
-                  <p className="text-sm font-medium text-slate-500">Resumen ejecutivo</p>
-                  <p className="mt-2 leading-7 text-slate-800">
+                <div className="rounded-2xl bg-amber-300/10 p-4">
+                  <p className="text-sm font-medium text-amber-200/80">Resumen ejecutivo</p>
+                  <p className="mt-2 leading-7 text-amber-50/90">
                     {submitted ? result.summary : "Pulsa “Analizar con IA” para generar el resumen."}
                   </p>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border p-4">
-                    <p className="text-sm font-medium text-slate-500">Señales detectadas</p>
+                  <div className="rounded-2xl border border-amber-200/25 p-4">
+                    <p className="text-sm font-medium text-amber-200/80">Señales detectadas</p>
                     <div className="mt-3 space-y-2">
                       {(submitted ? result.detected : ["La IA clasificará el caso y señalará riesgos, área y urgencia."]).map(
                         (item) => (
-                          <div key={item} className="flex gap-2 text-sm leading-6 text-slate-700">
+                          <div key={item} className="flex gap-2 text-sm leading-6 text-amber-50/85">
                             <span>•</span>
                             <span>{item}</span>
                           </div>
@@ -360,11 +364,11 @@ export default function AdarzuriAIDemo() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border p-4">
-                    <p className="text-sm font-medium text-slate-500">Documentación a pedir</p>
+                  <div className="rounded-2xl border border-amber-200/25 p-4">
+                    <p className="text-sm font-medium text-amber-200/80">Documentación a pedir</p>
                     <div className="mt-3 space-y-2">
                       {(submitted ? result.docs : ["La IA propondrá qué documentos pedir antes de la llamada."]).map((item) => (
-                        <div key={item} className="flex gap-2 text-sm leading-6 text-slate-700">
+                        <div key={item} className="flex gap-2 text-sm leading-6 text-amber-50/85">
                           <span>•</span>
                           <span>{item}</span>
                         </div>
@@ -373,14 +377,14 @@ export default function AdarzuriAIDemo() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border p-4">
-                  <p className="text-sm font-medium text-slate-500">Oportunidades comerciales sugeridas</p>
+                <div className="rounded-2xl border border-amber-200/25 p-4">
+                  <p className="text-sm font-medium text-amber-200/80">Oportunidades comerciales sugeridas</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(submitted
                       ? result.opportunities
                       : ["Servicio recurrente", "Implantación", "Consulta inicial", "Planificación"]
                     ).map((item) => (
-                      <span key={item} className="rounded-full bg-slate-100 px-3 py-1 text-sm">
+                      <span key={item} className="rounded-full bg-amber-300/15 px-3 py-1 text-sm text-amber-100">
                         {item}
                       </span>
                     ))}
@@ -390,39 +394,39 @@ export default function AdarzuriAIDemo() {
                 <div className="grid gap-3 sm:grid-cols-3">
                   <Card className="shadow-none">
                     <div className="p-4">
-                      <p className="text-sm text-slate-500">Cliente</p>
+                      <p className="text-sm text-amber-200/70">Cliente</p>
                       <p className="mt-1 font-medium">{form.name}</p>
-                      <p className="text-sm text-slate-600">{form.business}</p>
+                      <p className="text-sm text-amber-50/80">{form.business}</p>
                     </div>
                   </Card>
                   <Card className="shadow-none">
                     <div className="p-4">
-                      <p className="text-sm text-slate-500">Zona</p>
+                      <p className="text-sm text-amber-200/70">Zona</p>
                       <p className="mt-1 font-medium">{form.town}</p>
-                      <p className="text-sm text-slate-600">Gipuzkoa</p>
+                      <p className="text-sm text-amber-50/80">Gipuzkoa</p>
                     </div>
                   </Card>
                   <Card className="shadow-none">
                     <div className="p-4">
-                      <p className="text-sm text-slate-500">Siguiente paso</p>
+                      <p className="text-sm text-amber-200/70">Siguiente paso</p>
                       <p className="mt-1 font-medium">Llamada priorizada</p>
-                      <p className="text-sm text-slate-600">o respuesta por email</p>
+                      <p className="text-sm text-amber-50/80">o respuesta por email</p>
                     </div>
                   </Card>
                 </div>
 
-                <div className="rounded-2xl bg-slate-900 p-5 text-white">
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Valor para Adarzuri</p>
+                <div className="rounded-2xl bg-amber-300/10 p-5 text-amber-50">
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80">Valor para Adarzuri</p>
                   <p className="mt-2 text-lg leading-8">
                     Reduce tiempo administrativo, mejora la calidad de las consultas entrantes y aumenta la probabilidad de
                     convertir visitas en clientes recurrentes.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-3">
-                    <button className="flex items-center rounded-2xl bg-white px-4 py-2 text-slate-900" type="button">
+                    <button className="flex items-center rounded-2xl bg-amber-400 px-4 py-2 text-black" type="button">
                       Ver resumen CRM <ArrowRight className="ml-2 h-4 w-4" />
                     </button>
                     <button
-                      className="rounded-2xl border border-white/20 bg-transparent px-4 py-2 text-white hover:bg-white/10"
+                      className="rounded-2xl border border-amber-100/40 bg-transparent px-4 py-2 text-amber-50 hover:bg-amber-100/10"
                       type="button"
                     >
                       Enviar por email
